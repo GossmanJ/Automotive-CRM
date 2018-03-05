@@ -16,5 +16,11 @@ namespace Automotive_CRM
         {
             InitializeComponent();
         }
+
+        private void customerBtn_Click(object sender, EventArgs e)
+        {
+            Customer customer = new Customer();
+            customer.ShowDialog();
+        }
     }
 }

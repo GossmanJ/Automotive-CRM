@@ -19,6 +19,8 @@ namespace Automotive_CRM
 
         private void Customer_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'cRM_DatabaseDataSet.Customers' table. You can move, or remove it, as needed.
+            this.customersTableAdapter.Fill(this.cRM_DatabaseDataSet.Customers);
 
         }
     }
