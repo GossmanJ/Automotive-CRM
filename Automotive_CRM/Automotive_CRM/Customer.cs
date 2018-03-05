@@ -16,5 +16,10 @@ namespace Automotive_CRM
         {
             InitializeComponent();
         }
+
+        private void Customer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
