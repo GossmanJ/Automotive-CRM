@@ -22,5 +22,17 @@ namespace Automotive_CRM
             Customer customer = new Customer();
             customer.ShowDialog();
         }
+
+        private void vehicleBtn_Click(object sender, EventArgs e)
+        {
+            Vehicles vehicles = new Vehicles();
+            vehicles.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Inventory inventory = new Inventory();
+            inventory.ShowDialog();
+        }
     }
 }
