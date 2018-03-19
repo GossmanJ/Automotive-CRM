@@ -60,6 +60,7 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.newBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
+            this.viewOwnerBtn = new System.Windows.Forms.Button();
             owner_nameLabel = new System.Windows.Forms.Label();
             owner_numberLabel = new System.Windows.Forms.Label();
             makeLabel = new System.Windows.Forms.Label();
@@ -339,11 +340,22 @@
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
+            // viewOwnerBtn
+            // 
+            this.viewOwnerBtn.Location = new System.Drawing.Point(487, 347);
+            this.viewOwnerBtn.Name = "viewOwnerBtn";
+            this.viewOwnerBtn.Size = new System.Drawing.Size(75, 23);
+            this.viewOwnerBtn.TabIndex = 21;
+            this.viewOwnerBtn.Text = "View Owner";
+            this.viewOwnerBtn.UseVisualStyleBackColor = true;
+            this.viewOwnerBtn.Click += new System.EventHandler(this.viewOwnerBtn_Click);
+            // 
             // Vehicles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 381);
+            this.Controls.Add(this.viewOwnerBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.newBtn);
             this.Controls.Add(this.saveBtn);
@@ -405,5 +417,6 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button newBtn;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button viewOwnerBtn;
     }
 }

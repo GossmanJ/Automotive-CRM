@@ -30,7 +30,7 @@
         {
             this.customerBtn = new System.Windows.Forms.Button();
             this.vehicleBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.inventoryBtn = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.joePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.joePictureBox)).BeginInit();
@@ -56,15 +56,15 @@
             this.vehicleBtn.UseVisualStyleBackColor = true;
             this.vehicleBtn.Click += new System.EventHandler(this.vehicleBtn_Click);
             // 
-            // button3
+            // inventoryBtn
             // 
-            this.button3.Location = new System.Drawing.Point(128, 70);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(151, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Parts Inventory";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.inventoryBtn.Location = new System.Drawing.Point(128, 70);
+            this.inventoryBtn.Name = "inventoryBtn";
+            this.inventoryBtn.Size = new System.Drawing.Size(151, 23);
+            this.inventoryBtn.TabIndex = 2;
+            this.inventoryBtn.Text = "Parts Inventory";
+            this.inventoryBtn.UseVisualStyleBackColor = true;
+            this.inventoryBtn.Click += new System.EventHandler(this.inventoryBtn_Click);
             // 
             // button4
             // 
@@ -92,7 +92,7 @@
             this.ClientSize = new System.Drawing.Size(289, 134);
             this.Controls.Add(this.joePictureBox);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.inventoryBtn);
             this.Controls.Add(this.vehicleBtn);
             this.Controls.Add(this.customerBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -107,7 +107,7 @@
 
         private System.Windows.Forms.Button customerBtn;
         private System.Windows.Forms.Button vehicleBtn;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button inventoryBtn;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.PictureBox joePictureBox;
     }

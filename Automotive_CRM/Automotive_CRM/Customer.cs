@@ -12,16 +12,18 @@ namespace Automotive_CRM
 {
     public partial class Customer : Form
     {
-        List<string> names = new List<string>();
-        public Customer()
+        string _initialSearch;
+        public Customer(string str)
         {
             InitializeComponent();
+            _initialSearch = str;
         }
         
         private void Customer_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cRM_DatabaseDataSet.Customers' table. You can move, or remove it, as needed.
             this.customersTableAdapter.Fill(this.cRM_DatabaseDataSet.Customers);
+            SearchDB(_initialSearch);
         }
 
         private bool VerifyForms() //Verifies each form and displays the appropriate errors
@@ -85,14 +87,7 @@ namespace Automotive_CRM
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (searchBox.Text != "")
-            {
-                this.customersTableAdapter.SearchDesc(this.cRM_DatabaseDataSet.Customers, searchBox.Text);
-            }
-            else
-            {
-                this.customersTableAdapter.Fill(this.cRM_DatabaseDataSet.Customers);
-            }
+            SearchDB(searchBox.Text);
         }
 
         private void newBtn_Click(object sender, EventArgs e)
@@ -121,6 +116,24 @@ namespace Automotive_CRM
                 case DialogResult.No:
                     break;
             }
+        }
+
+        private void SearchDB(string str)
+        {
+            if (str != "")
+            {
+                this.customersTableAdapter.SearchDesc(this.cRM_DatabaseDataSet.Customers, str);
+            }
+            else
+            {
+                this.customersTableAdapter.Fill(this.cRM_DatabaseDataSet.Customers);
+            }
+        }
+
+        private void viewVehiclesBtn_Click(object sender, EventArgs e)
+        {
+            Vehicles vehicles = new Vehicles(phone_numberTextBox.Text);
+            vehicles.ShowDialog();
         }
     }
 }

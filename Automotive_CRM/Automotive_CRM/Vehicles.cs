@@ -12,9 +12,11 @@ namespace Automotive_CRM
 {
     public partial class Vehicles : Form
     {
-        public Vehicles()
+        string _initialSearch;
+        public Vehicles(string str)
         {
             InitializeComponent();
+            _initialSearch = str;
         }
 
         private void vehicleBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -22,13 +24,13 @@ namespace Automotive_CRM
             this.Validate();
             this.vehicleBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.cRM_DatabaseDataSet);
-
         }
 
         private void Vehicles_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cRM_DatabaseDataSet.Vehicle' table. You can move, or remove it, as needed.
             this.vehicleTableAdapter.Fill(this.cRM_DatabaseDataSet.Vehicle);
+            SearchDB(_initialSearch);
         }
 
         private void SearchDB(string str)
@@ -90,9 +92,10 @@ namespace Automotive_CRM
                 switch (result)
                 {
                     case DialogResult.Yes:
-                        this.Validate();
-                        this.vehicleBindingSource.EndEdit();
-                        this.vehicleTableAdapter.Update(this.cRM_DatabaseDataSet.Vehicle);
+                        //this.Validate();
+                        //this.vehicleBindingSource.EndEdit();
+                        //this.vehicleTableAdapter.Update(this.cRM_DatabaseDataSet.Vehicle);
+                        vehicleBindingNavigatorSaveItem_Click(sender, EventArgs.Empty);
                         break;
                     case DialogResult.No:
                         break;
@@ -131,6 +134,12 @@ namespace Automotive_CRM
                 case DialogResult.No:
                     break;
             }
+        }
+
+        private void viewOwnerBtn_Click(object sender, EventArgs e)
+        {
+            Customer customer = new Customer(owner_numberTextBox.Text);
+            customer.ShowDialog();
         }
     }
 }

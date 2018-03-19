@@ -19,19 +19,19 @@ namespace Automotive_CRM
 
         private void customerBtn_Click(object sender, EventArgs e)
         {
-            Customer customer = new Customer();
+            Customer customer = new Customer("");
             customer.ShowDialog();
         }
 
         private void vehicleBtn_Click(object sender, EventArgs e)
         {
-            Vehicles vehicles = new Vehicles();
+            Vehicles vehicles = new Vehicles("");
             vehicles.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void inventoryBtn_Click(object sender, EventArgs e)
         {
-            Inventory inventory = new Inventory();
+            Inventory inventory = new Inventory("");
             inventory.ShowDialog();
         }
     }

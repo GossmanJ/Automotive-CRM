@@ -33,6 +33,7 @@
             System.Windows.Forms.Label priceLabel;
             System.Windows.Forms.Label stockLabel;
             System.Windows.Forms.Label on_orderLabel;
+            System.Windows.Forms.Label compatible_makeBtn;
             this.cRM_DatabaseDataSet = new Automotive_CRM.CRM_DatabaseDataSet();
             this.partsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.partsTableAdapter = new Automotive_CRM.CRM_DatabaseDataSetTableAdapters.PartsTableAdapter();
@@ -43,25 +44,25 @@
             this.stockTextBox = new System.Windows.Forms.TextBox();
             this.on_orderTextBox = new System.Windows.Forms.TextBox();
             this.inventoryGridView = new System.Windows.Forms.DataGridView();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.onorderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compatiblemakesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.carGroupBox = new System.Windows.Forms.GroupBox();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.newBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.onorderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compatiblemakesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.viewCompatibleCarsBtn = new System.Windows.Forms.Button();
             nameLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
             stockLabel = new System.Windows.Forms.Label();
             on_orderLabel = new System.Windows.Forms.Label();
+            compatible_makeBtn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cRM_DatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryGridView)).BeginInit();
-            this.carGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -94,7 +95,7 @@
             // on_orderLabel
             // 
             on_orderLabel.AutoSize = true;
-            on_orderLabel.Location = new System.Drawing.Point(221, 249);
+            on_orderLabel.Location = new System.Drawing.Point(441, 171);
             on_orderLabel.Name = "on_orderLabel";
             on_orderLabel.Size = new System.Drawing.Size(53, 13);
             on_orderLabel.TabIndex = 8;
@@ -134,10 +135,10 @@
             // compatible_makesTextBox
             // 
             this.compatible_makesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsBindingSource, "compatible_makes", true));
-            this.compatible_makesTextBox.Location = new System.Drawing.Point(6, 16);
+            this.compatible_makesTextBox.Location = new System.Drawing.Point(500, 194);
             this.compatible_makesTextBox.Multiline = true;
             this.compatible_makesTextBox.Name = "compatible_makesTextBox";
-            this.compatible_makesTextBox.Size = new System.Drawing.Size(203, 76);
+            this.compatible_makesTextBox.Size = new System.Drawing.Size(100, 21);
             this.compatible_makesTextBox.TabIndex = 3;
             // 
             // priceTextBox
@@ -159,7 +160,7 @@
             // on_orderTextBox
             // 
             this.on_orderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.partsBindingSource, "on_order", true));
-            this.on_orderTextBox.Location = new System.Drawing.Point(280, 246);
+            this.on_orderTextBox.Location = new System.Drawing.Point(500, 168);
             this.on_orderTextBox.Name = "on_orderTextBox";
             this.on_orderTextBox.Size = new System.Drawing.Size(100, 20);
             this.on_orderTextBox.TabIndex = 9;
@@ -189,6 +190,53 @@
             this.inventoryGridView.TabIndex = 10;
             this.inventoryGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventoryGridView_CellContentClick);
             // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(12, 168);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(145, 20);
+            this.searchBox.TabIndex = 12;
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Location = new System.Drawing.Point(12, 194);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(75, 23);
+            this.searchBtn.TabIndex = 13;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(12, 249);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(69, 23);
+            this.deleteBtn.TabIndex = 14;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // newBtn
+            // 
+            this.newBtn.Location = new System.Drawing.Point(82, 249);
+            this.newBtn.Name = "newBtn";
+            this.newBtn.Size = new System.Drawing.Size(69, 23);
+            this.newBtn.TabIndex = 15;
+            this.newBtn.Text = "New ";
+            this.newBtn.UseVisualStyleBackColor = true;
+            this.newBtn.Click += new System.EventHandler(this.newBtn_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(532, 249);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(69, 23);
+            this.saveBtn.TabIndex = 16;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
@@ -213,7 +261,7 @@
             // compatiblemakesDataGridViewTextBoxColumn
             // 
             this.compatiblemakesDataGridViewTextBoxColumn.DataPropertyName = "compatible_makes";
-            this.compatiblemakesDataGridViewTextBoxColumn.HeaderText = "Compatible Cars";
+            this.compatiblemakesDataGridViewTextBoxColumn.HeaderText = "Compatible Make";
             this.compatiblemakesDataGridViewTextBoxColumn.Name = "compatiblemakesDataGridViewTextBoxColumn";
             this.compatiblemakesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -224,74 +272,38 @@
             this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
             this.priceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // carGroupBox
+            // compatible_makeBtn
             // 
-            this.carGroupBox.Controls.Add(this.compatible_makesTextBox);
-            this.carGroupBox.Location = new System.Drawing.Point(386, 168);
-            this.carGroupBox.Name = "carGroupBox";
-            this.carGroupBox.Size = new System.Drawing.Size(215, 98);
-            this.carGroupBox.TabIndex = 11;
-            this.carGroupBox.TabStop = false;
-            this.carGroupBox.Text = "Compatible Cars";
+            compatible_makeBtn.AutoSize = true;
+            compatible_makeBtn.Location = new System.Drawing.Point(402, 199);
+            compatible_makeBtn.Name = "compatible_makeBtn";
+            compatible_makeBtn.Size = new System.Drawing.Size(92, 13);
+            compatible_makeBtn.TabIndex = 17;
+            compatible_makeBtn.Text = "Compatible Make:";
             // 
-            // searchBox
+            // viewCompatibleCarsBtn
             // 
-            this.searchBox.Location = new System.Drawing.Point(12, 168);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(145, 20);
-            this.searchBox.TabIndex = 12;
-            // 
-            // searchBtn
-            // 
-            this.searchBtn.Location = new System.Drawing.Point(12, 194);
-            this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(75, 23);
-            this.searchBtn.TabIndex = 13;
-            this.searchBtn.Text = "Search";
-            this.searchBtn.UseVisualStyleBackColor = true;
-            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Location = new System.Drawing.Point(392, 272);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(69, 23);
-            this.deleteBtn.TabIndex = 14;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
-            // 
-            // newBtn
-            // 
-            this.newBtn.Location = new System.Drawing.Point(462, 272);
-            this.newBtn.Name = "newBtn";
-            this.newBtn.Size = new System.Drawing.Size(69, 23);
-            this.newBtn.TabIndex = 15;
-            this.newBtn.Text = "New ";
-            this.newBtn.UseVisualStyleBackColor = true;
-            this.newBtn.Click += new System.EventHandler(this.newBtn_Click);
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Location = new System.Drawing.Point(532, 272);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(69, 23);
-            this.saveBtn.TabIndex = 16;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.viewCompatibleCarsBtn.Location = new System.Drawing.Point(405, 249);
+            this.viewCompatibleCarsBtn.Name = "viewCompatibleCarsBtn";
+            this.viewCompatibleCarsBtn.Size = new System.Drawing.Size(121, 23);
+            this.viewCompatibleCarsBtn.TabIndex = 18;
+            this.viewCompatibleCarsBtn.Text = "View Compatible Cars";
+            this.viewCompatibleCarsBtn.UseVisualStyleBackColor = true;
+            this.viewCompatibleCarsBtn.Click += new System.EventHandler(this.viewCompatibleCarsBtn_Click);
             // 
             // Inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 305);
+            this.ClientSize = new System.Drawing.Size(612, 281);
+            this.Controls.Add(this.viewCompatibleCarsBtn);
+            this.Controls.Add(compatible_makeBtn);
+            this.Controls.Add(this.compatible_makesTextBox);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.newBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.carGroupBox);
             this.Controls.Add(this.inventoryGridView);
             this.Controls.Add(on_orderLabel);
             this.Controls.Add(this.on_orderTextBox);
@@ -301,14 +313,13 @@
             this.Controls.Add(this.priceTextBox);
             this.Controls.Add(nameLabel);
             this.Controls.Add(this.nameTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Inventory";
             this.Text = "Inventory";
             this.Load += new System.EventHandler(this.Inventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cRM_DatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryGridView)).EndInit();
-            this.carGroupBox.ResumeLayout(false);
-            this.carGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,16 +337,16 @@
         private System.Windows.Forms.TextBox stockTextBox;
         private System.Windows.Forms.TextBox on_orderTextBox;
         private System.Windows.Forms.DataGridView inventoryGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn onorderDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn compatiblemakesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.GroupBox carGroupBox;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button newBtn;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn onorderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn compatiblemakesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button viewCompatibleCarsBtn;
     }
 }

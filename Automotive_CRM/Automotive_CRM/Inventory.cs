@@ -12,9 +12,11 @@ namespace Automotive_CRM
 {
     public partial class Inventory : Form
     {
-        public Inventory()
+        string _initialSearch;
+        public Inventory(string str)
         {
             InitializeComponent();
+            _initialSearch = str;
         }
 
         private void partsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -29,7 +31,7 @@ namespace Automotive_CRM
         {
             // TODO: This line of code loads data into the 'cRM_DatabaseDataSet.Parts' table. You can move, or remove it, as needed.
             this.partsTableAdapter.Fill(this.cRM_DatabaseDataSet.Parts);
-
+            SearchDB(_initialSearch);
         }
 
         private void inventoryGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -39,9 +41,14 @@ namespace Automotive_CRM
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (searchBox.Text != "")
+            SearchDB(searchBox.Text);
+        }
+
+        private void SearchDB(string str)
+        {
+            if (str != "")
             {
-                this.partsTableAdapter.SearchDesc(this.cRM_DatabaseDataSet.Parts, searchBox.Text);
+                this.partsTableAdapter.SearchDesc(this.cRM_DatabaseDataSet.Parts, str);
             }
             else
             {
@@ -131,6 +138,12 @@ namespace Automotive_CRM
                         break;
                 }
             }
+        }
+
+        private void viewCompatibleCarsBtn_Click(object sender, EventArgs e)
+        {
+            Vehicles vehicles = new Vehicles(compatible_makesTextBox.Text);
+            vehicles.ShowDialog();
         }
     }
 }
