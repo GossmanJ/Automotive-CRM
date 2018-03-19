@@ -24,13 +24,11 @@ namespace Automotive_CRM
             this.customersTableAdapter.Fill(this.cRM_DatabaseDataSet.Customers);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private bool VerifyForms() //Verifies each form and displays the appropriate errors
         {
-
-        }
-
-        private bool verifyForms()
-        {
+            phone_numberTextBox.Text = Utilities.PhoneNumberFormat(phone_numberTextBox.Text);
+            nameTextBox.Text = Utilities.Capitalize(nameTextBox.Text);
+            addressTextBox.Text = Utilities.Capitalize(addressTextBox.Text);
             if (!Utilities.EmailCheck(email_addressTextBox.Text))
             {
                 MessageBox.Show("Invalid Email!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -69,9 +67,8 @@ namespace Automotive_CRM
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (verifyForms())
+            if (VerifyForms())
             {
-                phone_numberTextBox.Text = Utilities.PhoneNumberFormat(phone_numberTextBox.Text);
                 DialogResult result = MessageBox.Show("Are you sure you'd like to save?", "Save", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 switch (result)
                 {
@@ -95,6 +92,34 @@ namespace Automotive_CRM
             else
             {
                 this.customersTableAdapter.Fill(this.cRM_DatabaseDataSet.Customers);
+            }
+        }
+
+        private void newBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (VerifyForms())
+                {
+                    customersBindingSource.AddNew();
+                }                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Error! {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you'd like to delete the current item?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    customersBindingSource.RemoveCurrent();
+                    break;
+                case DialogResult.No:
+                    break;
             }
         }
     }

@@ -23,7 +23,7 @@ namespace Automotive_CRM
 
         public static string PhoneNumberFormat(string str)
         {
-            str.Replace(" ", "");
+            str = str.Replace(" ", "");
             foreach (char ch in str)
             {
                 if(char.IsLetter(ch))
@@ -48,8 +48,47 @@ namespace Automotive_CRM
             {
                 return string.Empty;
             }
-
             return string.Empty;
         }
+
+        public static string Capitalize(string str)
+        {
+            char[] array = str.ToCharArray();
+
+            if (array.Length >= 1)
+            {
+                if (char.IsLetter(array[0]) && char.IsLower(array[0]))
+                {
+                    array[0] = char.ToUpper(array[0]);
+                }
+            }
+
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i - 1] == ' ')
+                {
+                    if (char.IsLower(array[i]) && char.IsLetter(array[i]))
+                    {
+                        array[i] = char.ToUpper(array[i]);
+                    }
+                }
+            }
+            return new string(array);
+        }
+
+        public static string DecimalFormat(string str)
+        {
+            try
+            {
+                decimal result = decimal.Parse(str);
+                str = result.ToString("#.##");
+                return str;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
     }
 }

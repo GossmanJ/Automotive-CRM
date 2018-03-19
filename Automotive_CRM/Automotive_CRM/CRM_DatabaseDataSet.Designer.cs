@@ -938,7 +938,6 @@ namespace Automotive_CRM {
                 this.columnon_order.AllowDBNull = false;
                 this.columnname.AllowDBNull = false;
                 this.columnname.MaxLength = 50;
-                this.columncompatible_makes.AllowDBNull = false;
                 this.columncompatible_makes.MaxLength = 50;
                 this.columnprice.AllowDBNull = false;
             }
@@ -1351,7 +1350,7 @@ namespace Automotive_CRM {
                 this.columnyear.MaxLength = 4;
                 this.columndate_recieved.AllowDBNull = false;
                 this.columnowner_number.AllowDBNull = false;
-                this.columnowner_number.MaxLength = 10;
+                this.columnowner_number.MaxLength = 12;
                 this.columnowner_name.AllowDBNull = false;
                 this.columnowner_name.MaxLength = 50;
                 this.columninvoice_ids.MaxLength = 50;
@@ -1754,7 +1753,7 @@ namespace Automotive_CRM {
                 this.columnemail_address.MaxLength = 50;
                 this.columnvehicle_ids.MaxLength = 50;
                 this.columninvoice_ids.MaxLength = 50;
-                this.columnalternate_phone.MaxLength = 10;
+                this.columnalternate_phone.MaxLength = 12;
                 this.columnnotes.MaxLength = 2147483647;
             }
             
@@ -2059,7 +2058,12 @@ namespace Automotive_CRM {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string compatible_makes {
                 get {
-                    return ((string)(this[this.tableParts.compatible_makesColumn]));
+                    try {
+                        return ((string)(this[this.tableParts.compatible_makesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'compatible_makes\' in table \'Parts\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableParts.compatible_makesColumn] = value;
@@ -2091,6 +2095,18 @@ namespace Automotive_CRM {
                 set {
                     this[this.tableParts.photoColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Iscompatible_makesNull() {
+                return this.IsNull(this.tableParts.compatible_makesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setcompatible_makesNull() {
+                this[this.tableParts.compatible_makesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3240,22 +3256,17 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@photo", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "photo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Parts] SET [stock] = @stock, [on_order] = @on_order, [name] = @name, [compatible_makes] = @compatible_makes, [price] = @price, [photo] = @photo WHERE (([id] = @Original_id) AND ([stock] = @Original_stock) AND ([on_order] = @Original_on_order) AND ([name] = @Original_name) AND ([compatible_makes] = @Original_compatible_makes) AND ([price] = @Original_price));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Parts] SET [stock] = @stock, [on_order] = @on_order, [name] = @name, [compatible_makes] = @compatible_makes, [price] = @price, [photo] = @photo WHERE (([id] = @Original_id));
 SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@stock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "stock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@on_order", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "on_order", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compatible_makes", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "compatible_makes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@photo", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "photo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_stock", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "stock", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_on_order", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "on_order", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_compatible_makes", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "compatible_makes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_price", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@stock", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "stock", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@on_order", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "on_order", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@compatible_makes", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "compatible_makes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@photo", global::System.Data.SqlDbType.Image, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "photo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3268,11 +3279,18 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, stock, on_order, name, compatible_makes, price, photo FROM dbo.Parts";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        id, stock, on_order, name, compatible_makes, price\r\nFROM           " +
+                " Parts\r\nWHERE        (name LIKE \'%\' + @value + \'%\') OR\r\n                        " +
+                " (compatible_makes LIKE \'%\' + @value + \'%\')";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@value", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3297,6 +3315,25 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
             CRM_DatabaseDataSet.PartsDataTable dataTable = new CRM_DatabaseDataSet.PartsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SearchDesc(CRM_DatabaseDataSet.PartsDataTable dataTable, string value) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((value == null)) {
+                throw new global::System.ArgumentNullException("value");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(value));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3343,7 +3380,7 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_name));
             }
             if ((Original_compatible_makes == null)) {
-                throw new global::System.ArgumentNullException("Original_compatible_makes");
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_compatible_makes));
@@ -3379,7 +3416,7 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(name));
             }
             if ((compatible_makes == null)) {
-                throw new global::System.ArgumentNullException("compatible_makes");
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(compatible_makes));
@@ -3411,7 +3448,7 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int stock, int on_order, string name, string compatible_makes, decimal price, byte[] photo, int Original_id, int Original_stock, int Original_on_order, string Original_name, string Original_compatible_makes, decimal Original_price, int id) {
+        public virtual int Update(int stock, int on_order, string name, string compatible_makes, decimal price, byte[] photo, int Original_id, int id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(stock));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(on_order));
             if ((name == null)) {
@@ -3421,7 +3458,7 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(name));
             }
             if ((compatible_makes == null)) {
-                throw new global::System.ArgumentNullException("compatible_makes");
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(compatible_makes));
@@ -3434,22 +3471,7 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((byte[])(photo));
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_stock));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_on_order));
-            if ((Original_name == null)) {
-                throw new global::System.ArgumentNullException("Original_name");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_name));
-            }
-            if ((Original_compatible_makes == null)) {
-                throw new global::System.ArgumentNullException("Original_compatible_makes");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_compatible_makes));
-            }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_price));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3464,14 +3486,6 @@ SELECT id, stock, on_order, name, compatible_makes, price, photo FROM Parts WHER
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int stock, int on_order, string name, string compatible_makes, decimal price, byte[] photo, int Original_id, int Original_stock, int Original_on_order, string Original_name, string Original_compatible_makes, decimal Original_price) {
-            return this.Update(stock, on_order, name, compatible_makes, price, photo, Original_id, Original_stock, Original_on_order, Original_name, Original_compatible_makes, Original_price, Original_id);
         }
     }
     
@@ -3677,12 +3691,19 @@ SELECT id, make, model, year, date_recieved, date_returned, owner_number, owner_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, make, model, year, date_recieved, date_returned, owner_number, owner_n" +
                 "ame, invoice_ids, notes, photo FROM dbo.Vehicle";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        make, model, year, date_recieved, date_returned, owner_number, owner_name, notes
+FROM            Vehicle
+WHERE        (owner_name LIKE '%' + @value + '%') OR (owner_number LIKE '%' + @value + '%')  OR (make LIKE '%' + @value + '%') OR (model LIKE '%' + @value + '%')";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@value", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "owner_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3707,6 +3728,25 @@ SELECT id, make, model, year, date_recieved, date_returned, owner_number, owner_
             CRM_DatabaseDataSet.VehicleDataTable dataTable = new CRM_DatabaseDataSet.VehicleDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SearchDesc(CRM_DatabaseDataSet.VehicleDataTable dataTable, string value) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((value == null)) {
+                throw new global::System.ArgumentNullException("value");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(value));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
