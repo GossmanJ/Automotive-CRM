@@ -31,7 +31,7 @@
             this.customerBtn = new System.Windows.Forms.Button();
             this.vehicleBtn = new System.Windows.Forms.Button();
             this.inventoryBtn = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.invoicesBtn = new System.Windows.Forms.Button();
             this.joePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.joePictureBox)).BeginInit();
             this.SuspendLayout();
@@ -66,14 +66,15 @@
             this.inventoryBtn.UseVisualStyleBackColor = true;
             this.inventoryBtn.Click += new System.EventHandler(this.inventoryBtn_Click);
             // 
-            // button4
+            // invoicesBtn
             // 
-            this.button4.Location = new System.Drawing.Point(128, 99);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(151, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Invoices";
-            this.button4.UseVisualStyleBackColor = true;
+            this.invoicesBtn.Location = new System.Drawing.Point(128, 99);
+            this.invoicesBtn.Name = "invoicesBtn";
+            this.invoicesBtn.Size = new System.Drawing.Size(151, 23);
+            this.invoicesBtn.TabIndex = 3;
+            this.invoicesBtn.Text = "Invoices";
+            this.invoicesBtn.UseVisualStyleBackColor = true;
+            this.invoicesBtn.Click += new System.EventHandler(this.invoicesBtn_Click);
             // 
             // joePictureBox
             // 
@@ -91,7 +92,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 134);
             this.Controls.Add(this.joePictureBox);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.invoicesBtn);
             this.Controls.Add(this.inventoryBtn);
             this.Controls.Add(this.vehicleBtn);
             this.Controls.Add(this.customerBtn);
@@ -108,7 +109,7 @@
         private System.Windows.Forms.Button customerBtn;
         private System.Windows.Forms.Button vehicleBtn;
         private System.Windows.Forms.Button inventoryBtn;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button invoicesBtn;
         private System.Windows.Forms.PictureBox joePictureBox;
     }
 }

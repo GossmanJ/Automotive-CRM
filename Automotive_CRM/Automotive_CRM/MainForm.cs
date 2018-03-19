@@ -34,5 +34,11 @@ namespace Automotive_CRM
             Inventory inventory = new Inventory("");
             inventory.ShowDialog();
         }
+
+        private void invoicesBtn_Click(object sender, EventArgs e)
+        {
+            Invoices invoices = new Invoices("");
+            invoices.ShowDialog();
+        }
     }
 }

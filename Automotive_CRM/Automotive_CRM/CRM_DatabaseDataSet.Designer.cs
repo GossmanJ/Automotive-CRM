@@ -584,10 +584,8 @@ namespace Automotive_CRM {
                 this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columncustomer_phone.AllowDBNull = false;
-                this.columncustomer_phone.MaxLength = 10;
-                this.columnparts_used.AllowDBNull = false;
+                this.columncustomer_phone.MaxLength = 12;
                 this.columnparts_used.MaxLength = 50;
-                this.columnlabor_cost.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1921,7 +1919,12 @@ namespace Automotive_CRM {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string parts_used {
                 get {
-                    return ((string)(this[this.tableInvoices.parts_usedColumn]));
+                    try {
+                        return ((string)(this[this.tableInvoices.parts_usedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'parts_used\' in table \'Invoices\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInvoices.parts_usedColumn] = value;
@@ -1932,7 +1935,12 @@ namespace Automotive_CRM {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal labor_cost {
                 get {
-                    return ((decimal)(this[this.tableInvoices.labor_costColumn]));
+                    try {
+                        return ((decimal)(this[this.tableInvoices.labor_costColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'labor_cost\' in table \'Invoices\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableInvoices.labor_costColumn] = value;
@@ -1969,6 +1977,30 @@ namespace Automotive_CRM {
                 set {
                     this[this.tableInvoices.totalColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isparts_usedNull() {
+                return this.IsNull(this.tableInvoices.parts_usedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setparts_usedNull() {
+                this[this.tableInvoices.parts_usedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Islabor_costNull() {
+                return this.IsNull(this.tableInvoices.labor_costColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setlabor_costNull() {
+                this[this.tableInvoices.labor_costColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2857,12 +2889,19 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM dbo.In" +
                 "voices";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM dbo.In" +
+                "voices WHERE (customer_phone LIKE \'%\' + @value + \'%\') OR (id LIKE \'%\' + @value +" +
+                " \'%\')";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@value", global::System.Data.SqlDbType.NChar, 12, global::System.Data.ParameterDirection.Input, 0, 0, "customer_phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2887,6 +2926,25 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
             CRM_DatabaseDataSet.InvoicesDataTable dataTable = new CRM_DatabaseDataSet.InvoicesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int SearchDesc(CRM_DatabaseDataSet.InvoicesDataTable dataTable, string value) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((value == null)) {
+                throw new global::System.ArgumentNullException("value");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(value));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2922,7 +2980,7 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_customer_phone, string Original_parts_used, decimal Original_labor_cost, global::System.Nullable<bool> Original_fluid_check, global::System.Nullable<decimal> Original_total) {
+        public virtual int Delete(int Original_id, string Original_customer_phone, string Original_parts_used, global::System.Nullable<decimal> Original_labor_cost, global::System.Nullable<bool> Original_fluid_check, global::System.Nullable<decimal> Original_total) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_customer_phone == null)) {
                 throw new global::System.ArgumentNullException("Original_customer_phone");
@@ -2931,12 +2989,17 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_customer_phone));
             }
             if ((Original_parts_used == null)) {
-                throw new global::System.ArgumentNullException("Original_parts_used");
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_parts_used));
             }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_labor_cost));
+            if ((Original_labor_cost.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_labor_cost.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
             if ((Original_fluid_check.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((bool)(Original_fluid_check.Value));
@@ -2973,7 +3036,7 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string customer_phone, string parts_used, decimal labor_cost, global::System.Nullable<bool> fluid_check, global::System.Nullable<decimal> total) {
+        public virtual int Insert(string customer_phone, string parts_used, global::System.Nullable<decimal> labor_cost, global::System.Nullable<bool> fluid_check, global::System.Nullable<decimal> total) {
             if ((customer_phone == null)) {
                 throw new global::System.ArgumentNullException("customer_phone");
             }
@@ -2981,12 +3044,17 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(customer_phone));
             }
             if ((parts_used == null)) {
-                throw new global::System.ArgumentNullException("parts_used");
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(parts_used));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(labor_cost));
+            if ((labor_cost.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(labor_cost.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((fluid_check.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(fluid_check.Value));
             }
@@ -3019,7 +3087,7 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string customer_phone, string parts_used, decimal labor_cost, global::System.Nullable<bool> fluid_check, global::System.Nullable<decimal> total, int Original_id, string Original_customer_phone, string Original_parts_used, decimal Original_labor_cost, global::System.Nullable<bool> Original_fluid_check, global::System.Nullable<decimal> Original_total, int id) {
+        public virtual int Update(string customer_phone, string parts_used, global::System.Nullable<decimal> labor_cost, global::System.Nullable<bool> fluid_check, global::System.Nullable<decimal> total, int Original_id, string Original_customer_phone, string Original_parts_used, global::System.Nullable<decimal> Original_labor_cost, global::System.Nullable<bool> Original_fluid_check, global::System.Nullable<decimal> Original_total, int id) {
             if ((customer_phone == null)) {
                 throw new global::System.ArgumentNullException("customer_phone");
             }
@@ -3027,12 +3095,17 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(customer_phone));
             }
             if ((parts_used == null)) {
-                throw new global::System.ArgumentNullException("parts_used");
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(parts_used));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(labor_cost));
+            if ((labor_cost.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(labor_cost.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((fluid_check.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(fluid_check.Value));
             }
@@ -3053,12 +3126,17 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_customer_phone));
             }
             if ((Original_parts_used == null)) {
-                throw new global::System.ArgumentNullException("Original_parts_used");
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_parts_used));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_labor_cost));
+            if ((Original_labor_cost.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_labor_cost.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
             if ((Original_fluid_check.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(Original_fluid_check.Value));
@@ -3096,7 +3174,7 @@ SELECT id, customer_phone, parts_used, labor_cost, fluid_check, total FROM Invoi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string customer_phone, string parts_used, decimal labor_cost, global::System.Nullable<bool> fluid_check, global::System.Nullable<decimal> total, int Original_id, string Original_customer_phone, string Original_parts_used, decimal Original_labor_cost, global::System.Nullable<bool> Original_fluid_check, global::System.Nullable<decimal> Original_total) {
+        public virtual int Update(string customer_phone, string parts_used, global::System.Nullable<decimal> labor_cost, global::System.Nullable<bool> fluid_check, global::System.Nullable<decimal> total, int Original_id, string Original_customer_phone, string Original_parts_used, global::System.Nullable<decimal> Original_labor_cost, global::System.Nullable<bool> Original_fluid_check, global::System.Nullable<decimal> Original_total) {
             return this.Update(customer_phone, parts_used, labor_cost, fluid_check, total, Original_id, Original_customer_phone, Original_parts_used, Original_labor_cost, Original_fluid_check, Original_total, Original_id);
         }
     }

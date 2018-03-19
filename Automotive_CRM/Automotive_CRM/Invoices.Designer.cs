@@ -49,6 +49,11 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.writeBtn = new System.Windows.Forms.Button();
+            this.openFolderBtn = new System.Windows.Forms.Button();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.searchBtn = new System.Windows.Forms.Button();
             idLabel = new System.Windows.Forms.Label();
             customer_phoneLabel = new System.Windows.Forms.Label();
             parts_usedLabel = new System.Windows.Forms.Label();
@@ -59,6 +64,60 @@
             ((System.ComponentModel.ISupportInitialize)(this.invoicesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesDataGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Location = new System.Drawing.Point(294, 15);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new System.Drawing.Size(21, 13);
+            idLabel.TabIndex = 1;
+            idLabel.Text = "ID:";
+            // 
+            // customer_phoneLabel
+            // 
+            customer_phoneLabel.AutoSize = true;
+            customer_phoneLabel.Location = new System.Drawing.Point(229, 41);
+            customer_phoneLabel.Name = "customer_phoneLabel";
+            customer_phoneLabel.Size = new System.Drawing.Size(88, 13);
+            customer_phoneLabel.TabIndex = 3;
+            customer_phoneLabel.Text = "Customer Phone:";
+            // 
+            // parts_usedLabel
+            // 
+            parts_usedLabel.AutoSize = true;
+            parts_usedLabel.Location = new System.Drawing.Point(258, 67);
+            parts_usedLabel.Name = "parts_usedLabel";
+            parts_usedLabel.Size = new System.Drawing.Size(57, 13);
+            parts_usedLabel.TabIndex = 5;
+            parts_usedLabel.Text = "Part Used:";
+            // 
+            // labor_costLabel
+            // 
+            labor_costLabel.AutoSize = true;
+            labor_costLabel.Location = new System.Drawing.Point(256, 93);
+            labor_costLabel.Name = "labor_costLabel";
+            labor_costLabel.Size = new System.Drawing.Size(61, 13);
+            labor_costLabel.TabIndex = 7;
+            labor_costLabel.Text = "Labor Cost:";
+            // 
+            // fluid_checkLabel
+            // 
+            fluid_checkLabel.AutoSize = true;
+            fluid_checkLabel.Location = new System.Drawing.Point(249, 121);
+            fluid_checkLabel.Name = "fluid_checkLabel";
+            fluid_checkLabel.Size = new System.Drawing.Size(66, 13);
+            fluid_checkLabel.TabIndex = 9;
+            fluid_checkLabel.Text = "Fluid Check:";
+            // 
+            // totalLabel
+            // 
+            totalLabel.AutoSize = true;
+            totalLabel.Location = new System.Drawing.Point(281, 149);
+            totalLabel.Name = "totalLabel";
+            totalLabel.Size = new System.Drawing.Size(34, 13);
+            totalLabel.TabIndex = 11;
+            totalLabel.Text = "Total:";
             // 
             // cRM_DatabaseDataSet
             // 
@@ -83,15 +142,6 @@
             this.tableAdapterManager.UpdateOrder = Automotive_CRM.CRM_DatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.VehicleTableAdapter = null;
             // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(294, 15);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(21, 13);
-            idLabel.TabIndex = 1;
-            idLabel.Text = "ID:";
-            // 
             // idTextBox
             // 
             this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoicesBindingSource, "id", true));
@@ -101,15 +151,6 @@
             this.idTextBox.Size = new System.Drawing.Size(100, 20);
             this.idTextBox.TabIndex = 2;
             // 
-            // customer_phoneLabel
-            // 
-            customer_phoneLabel.AutoSize = true;
-            customer_phoneLabel.Location = new System.Drawing.Point(229, 41);
-            customer_phoneLabel.Name = "customer_phoneLabel";
-            customer_phoneLabel.Size = new System.Drawing.Size(88, 13);
-            customer_phoneLabel.TabIndex = 3;
-            customer_phoneLabel.Text = "Customer Phone:";
-            // 
             // customer_phoneTextBox
             // 
             this.customer_phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoicesBindingSource, "customer_phone", true));
@@ -117,15 +158,6 @@
             this.customer_phoneTextBox.Name = "customer_phoneTextBox";
             this.customer_phoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.customer_phoneTextBox.TabIndex = 4;
-            // 
-            // parts_usedLabel
-            // 
-            parts_usedLabel.AutoSize = true;
-            parts_usedLabel.Location = new System.Drawing.Point(256, 67);
-            parts_usedLabel.Name = "parts_usedLabel";
-            parts_usedLabel.Size = new System.Drawing.Size(62, 13);
-            parts_usedLabel.TabIndex = 5;
-            parts_usedLabel.Text = "Parts Used:";
             // 
             // parts_usedTextBox
             // 
@@ -135,15 +167,6 @@
             this.parts_usedTextBox.Size = new System.Drawing.Size(100, 20);
             this.parts_usedTextBox.TabIndex = 6;
             // 
-            // labor_costLabel
-            // 
-            labor_costLabel.AutoSize = true;
-            labor_costLabel.Location = new System.Drawing.Point(256, 93);
-            labor_costLabel.Name = "labor_costLabel";
-            labor_costLabel.Size = new System.Drawing.Size(61, 13);
-            labor_costLabel.TabIndex = 7;
-            labor_costLabel.Text = "Labor Cost:";
-            // 
             // labor_costTextBox
             // 
             this.labor_costTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.invoicesBindingSource, "labor_cost", true));
@@ -151,15 +174,6 @@
             this.labor_costTextBox.Name = "labor_costTextBox";
             this.labor_costTextBox.Size = new System.Drawing.Size(100, 20);
             this.labor_costTextBox.TabIndex = 8;
-            // 
-            // fluid_checkLabel
-            // 
-            fluid_checkLabel.AutoSize = true;
-            fluid_checkLabel.Location = new System.Drawing.Point(249, 121);
-            fluid_checkLabel.Name = "fluid_checkLabel";
-            fluid_checkLabel.Size = new System.Drawing.Size(66, 13);
-            fluid_checkLabel.TabIndex = 9;
-            fluid_checkLabel.Text = "Fluid Check:";
             // 
             // fluid_checkCheckBox
             // 
@@ -169,15 +183,6 @@
             this.fluid_checkCheckBox.Size = new System.Drawing.Size(100, 24);
             this.fluid_checkCheckBox.TabIndex = 10;
             this.fluid_checkCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // totalLabel
-            // 
-            totalLabel.AutoSize = true;
-            totalLabel.Location = new System.Drawing.Point(281, 149);
-            totalLabel.Name = "totalLabel";
-            totalLabel.Size = new System.Drawing.Size(34, 13);
-            totalLabel.TabIndex = 11;
-            totalLabel.Text = "Total:";
             // 
             // totalTextBox
             // 
@@ -212,6 +217,7 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn1.FillWeight = 45.68528F;
             this.dataGridViewTextBoxColumn1.HeaderText = "ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -219,6 +225,7 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "customer_phone";
+            this.dataGridViewTextBoxColumn2.FillWeight = 127.1574F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Phone";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -226,15 +233,66 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "total";
+            this.dataGridViewTextBoxColumn5.FillWeight = 127.1574F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Total";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(351, 204);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(78, 23);
+            this.saveBtn.TabIndex = 13;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            // 
+            // writeBtn
+            // 
+            this.writeBtn.Location = new System.Drawing.Point(351, 175);
+            this.writeBtn.Name = "writeBtn";
+            this.writeBtn.Size = new System.Drawing.Size(78, 23);
+            this.writeBtn.TabIndex = 14;
+            this.writeBtn.Text = "Write to Text";
+            this.writeBtn.UseVisualStyleBackColor = true;
+            this.writeBtn.Click += new System.EventHandler(this.writeBtn_Click);
+            // 
+            // openFolderBtn
+            // 
+            this.openFolderBtn.Location = new System.Drawing.Point(267, 175);
+            this.openFolderBtn.Name = "openFolderBtn";
+            this.openFolderBtn.Size = new System.Drawing.Size(78, 23);
+            this.openFolderBtn.TabIndex = 15;
+            this.openFolderBtn.Text = "Open Folder";
+            this.openFolderBtn.UseVisualStyleBackColor = true;
+            // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(12, 172);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(211, 20);
+            this.searchBox.TabIndex = 16;
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Location = new System.Drawing.Point(12, 198);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(75, 23);
+            this.searchBtn.TabIndex = 17;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // Invoices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 202);
+            this.ClientSize = new System.Drawing.Size(441, 239);
+            this.Controls.Add(this.searchBtn);
+            this.Controls.Add(this.searchBox);
+            this.Controls.Add(this.openFolderBtn);
+            this.Controls.Add(this.writeBtn);
+            this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.invoicesDataGridView);
             this.Controls.Add(totalLabel);
             this.Controls.Add(this.totalTextBox);
@@ -275,5 +333,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button writeBtn;
+        private System.Windows.Forms.Button openFolderBtn;
+        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Button searchBtn;
     }
 }

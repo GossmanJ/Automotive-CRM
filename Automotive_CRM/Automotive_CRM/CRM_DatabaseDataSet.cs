@@ -4,6 +4,10 @@
 
     partial class CRM_DatabaseDataSet
     {
+        partial class InvoicesDataTable
+        {
+        }
+
         partial class PartsDataTable
         {
         }

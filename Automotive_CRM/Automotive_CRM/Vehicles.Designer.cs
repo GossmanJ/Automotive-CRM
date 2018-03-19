@@ -61,6 +61,7 @@
             this.newBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.viewOwnerBtn = new System.Windows.Forms.Button();
+            this.viewInvoicesBtn = new System.Windows.Forms.Button();
             owner_nameLabel = new System.Windows.Forms.Label();
             owner_numberLabel = new System.Windows.Forms.Label();
             makeLabel = new System.Windows.Forms.Label();
@@ -342,19 +343,30 @@
             // 
             // viewOwnerBtn
             // 
-            this.viewOwnerBtn.Location = new System.Drawing.Point(487, 347);
+            this.viewOwnerBtn.Location = new System.Drawing.Point(12, 245);
             this.viewOwnerBtn.Name = "viewOwnerBtn";
-            this.viewOwnerBtn.Size = new System.Drawing.Size(75, 23);
+            this.viewOwnerBtn.Size = new System.Drawing.Size(86, 23);
             this.viewOwnerBtn.TabIndex = 21;
             this.viewOwnerBtn.Text = "View Owner";
             this.viewOwnerBtn.UseVisualStyleBackColor = true;
             this.viewOwnerBtn.Click += new System.EventHandler(this.viewOwnerBtn_Click);
             // 
+            // viewInvoicesBtn
+            // 
+            this.viewInvoicesBtn.Location = new System.Drawing.Point(12, 274);
+            this.viewInvoicesBtn.Name = "viewInvoicesBtn";
+            this.viewInvoicesBtn.Size = new System.Drawing.Size(86, 23);
+            this.viewInvoicesBtn.TabIndex = 22;
+            this.viewInvoicesBtn.Text = "View Invoices";
+            this.viewInvoicesBtn.UseVisualStyleBackColor = true;
+            this.viewInvoicesBtn.Click += new System.EventHandler(this.viewInvoicesBtn_Click);
+            // 
             // Vehicles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 381);
+            this.ClientSize = new System.Drawing.Size(687, 380);
+            this.Controls.Add(this.viewInvoicesBtn);
             this.Controls.Add(this.viewOwnerBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.newBtn);
@@ -418,5 +430,6 @@
         private System.Windows.Forms.Button newBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button viewOwnerBtn;
+        private System.Windows.Forms.Button viewInvoicesBtn;
     }
 }

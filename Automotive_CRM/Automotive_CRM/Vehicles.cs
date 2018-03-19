@@ -141,5 +141,11 @@ namespace Automotive_CRM
             Customer customer = new Customer(owner_numberTextBox.Text);
             customer.ShowDialog();
         }
+
+        private void viewInvoicesBtn_Click(object sender, EventArgs e)
+        {
+            Invoices invoices = new Invoices(owner_numberTextBox.Text);
+            invoices.ShowDialog();
+        }
     }
 }

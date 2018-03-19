@@ -58,6 +58,7 @@
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.viewVehiclesBtn = new System.Windows.Forms.Button();
+            this.viewInvoicesBtn = new System.Windows.Forms.Button();
             phone_numberLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             addressLabel = new System.Windows.Forms.Label();
@@ -330,11 +331,22 @@
             this.viewVehiclesBtn.UseVisualStyleBackColor = true;
             this.viewVehiclesBtn.Click += new System.EventHandler(this.viewVehiclesBtn_Click);
             // 
+            // viewInvoicesBtn
+            // 
+            this.viewInvoicesBtn.Location = new System.Drawing.Point(419, 162);
+            this.viewInvoicesBtn.Name = "viewInvoicesBtn";
+            this.viewInvoicesBtn.Size = new System.Drawing.Size(89, 23);
+            this.viewInvoicesBtn.TabIndex = 35;
+            this.viewInvoicesBtn.Text = "View Invoices";
+            this.viewInvoicesBtn.UseVisualStyleBackColor = true;
+            this.viewInvoicesBtn.Click += new System.EventHandler(this.viewInvoicesBtn_Click);
+            // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(515, 386);
+            this.Controls.Add(this.viewInvoicesBtn);
             this.Controls.Add(this.viewVehiclesBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.newBtn);
@@ -395,5 +407,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.Button viewVehiclesBtn;
+        private System.Windows.Forms.Button viewInvoicesBtn;
     }
 }

@@ -135,5 +135,11 @@ namespace Automotive_CRM
             Vehicles vehicles = new Vehicles(phone_numberTextBox.Text);
             vehicles.ShowDialog();
         }
+
+        private void viewInvoicesBtn_Click(object sender, EventArgs e)
+        {
+            Invoices invoices = new Invoices(phone_numberTextBox.Text);
+            invoices.ShowDialog();
+        }
     }
 }
