@@ -3701,12 +3701,9 @@ SELECT id, make, model, year, date_recieved, date_returned, owner_number, owner_
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"SELECT        make, model, year, date_recieved, date_returned, owner_number, owner_name, notes
 FROM            Vehicle
-WHERE        (owner_number LIKE '%' + @value + '%') OR
-                         (owner_name LIKE '%' + @value + '%') OR
-                         (make LIKE '%' + @value + '%') OR
-                         (model LIKE '%' + @value + '%')";
+WHERE        (owner_name LIKE '%' + @value + '%') OR (owner_number LIKE '%' + @value + '%')  OR (make LIKE '%' + @value + '%') OR (model LIKE '%' + @value + '%')";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@value", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "owner_number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@value", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "owner_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
